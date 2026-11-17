@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/*
+ * AI-BID 2027 — tokens
+ * Charte e-BIDDER (marine #003366, orange #FE7200, Golos Text / Roboto)
+ * + chaleur du kakemono (or solaire #EFBB59 / #E3961C, feu).
+ */
+@theme {
+  --color-navy-950: #000F22;
+  --color-navy-900: #001A38;
+  --color-navy-800: #00254D;
+  --color-navy-700: #003366;
+  --color-navy-600: #12487F;
+  --color-navy-300: #8FA6C6;
+  --color-navy-200: #C9D6EA;
+  --color-navy-100: #E4EBF5;
+  --color-navy-50: #F2F5FA;
+
+  --color-orange-600: #E05F00;
+  --color-orange-500: #FE7200;
+  --color-orange-400: #FF8F33;
+  --color-ember: #C8261B; /* rouge du feu du kakemono */
+
+  --color-gold-500: #E3961C;
+  --color-gold-300: #EFBB59;
+  --color-gold-100: #FBEBCB;
+
+  --color-paper: #FBF8F3;
+  --color-ink: #0F2340;
+  --color-muted: #5B6B82;
+
+  --color-tier-essentiel: #4E72B3;
+  --color-tier-pro: #FE7200;
+  --color-tier-premium: #4B2283;
+
+  --font-display: var(--font-golos), "Golos Text", system-ui, sans-serif;
+  --font-sans: var(--font-roboto), Roboto, system-ui, sans-serif;
+  --font-script: var(--font-greatvibes), cursive;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-orange-500);
+  color: white;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-orange-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Billet : perforation et encoches, réutilisées partout ---------- */
+
+/* Ligne pointillée verticale entre corps et talon. */
+.perf-v {
+  background-image: radial-gradient(circle, var(--notch, var(--color-paper)) 2.2px, transparent 2.6px);
+  background-size: 6px 11px;
+  background-repeat: repeat-y;
+  background-position: center;
+}
+/* Ligne pointillée horizontale. */
+.perf-h {
+  background-image: radial-gradient(circle, var(--notch, var(--color-paper)) 2.2px, transparent 2.6px);
+  background-size: 11px 6px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+/* Grain discret, pour que les aplats aient une matière « imprimée ». */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Sortie d'impression du billet (bouton « Imprimer » de la confirmation). */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}
