@@ -169,9 +169,9 @@ async function drawTicketPage(pdf: PDFDocument, f: Fonts, img: Images, order: Or
   // Infos (dates / lieu / horaires) en bas
   const infoY = y0 + 26;
   const cols = [
-    { k: "Dates", v: EVENT.datesLabel },
+    { k: "Date", v: EVENT.datesLabel },
     { k: "Lieu", v: `${EVENT.venueShort}, Cotonou` },
-    { k: "Horaires", v: "08h30 – 17h30" },
+    { k: "Horaires", v: EVENT.hoursShort },
   ];
   let cx = L;
   for (const c of cols) {

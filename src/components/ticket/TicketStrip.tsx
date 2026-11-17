@@ -120,9 +120,9 @@ export function TicketStrip({
               )}
               <div className="mt-[1.4cqw] flex gap-[2.6cqw] border-t border-white/20 pt-[1.2cqw]">
                 {[
-                  ["Dates", EVENT.datesLabel],
+                  ["Date", EVENT.datesLabel],
                   ["Lieu", `${EVENT.venueShort}, Cotonou`],
-                  ["Horaires", "08h30 – 17h30"],
+                  ["Horaires", EVENT.hoursShort],
                 ].map(([k, v]) => (
                   <div key={k}>
                     <p className="text-navy-300" style={{ fontSize: "0.95cqw" }}>

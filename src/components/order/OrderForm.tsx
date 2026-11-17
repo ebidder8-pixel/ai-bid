@@ -151,7 +151,7 @@ export function OrderForm() {
             <div className="bg-navy-800 px-7 py-6 text-white">
               <p className="font-display text-sm font-semibold text-gold-300">Récapitulatif</p>
               <p className="mt-1 font-display text-2xl font-black">AI-BID 2027</p>
-              <p className="text-sm text-navy-200">26 – 28 février 2027 · Cotonou</p>
+              <p className="text-sm text-navy-200">Samedi 27 février 2027 · Cotonou</p>
             </div>
             <div className="px-7 py-6">
               <ul className="space-y-4">

@@ -10,10 +10,11 @@ export function Infos() {
           </h2>
           <dl className="mt-10 divide-y divide-navy-100 border-y border-navy-100">
             {[
-              ["Dates", EVENT.datesLabel, "Vendredi, samedi et dimanche"],
+              ["Date", EVENT.datesLabel, "La masterclass, ouverte à tous les billets"],
               ["Lieu", EVENT.venue, EVENT.city],
-              ["Horaires", "08h30 – 17h30", "Accueil dès 08h00 · le dimanche jusqu'à 13h00"],
+              ["Horaires", EVENT.hoursShort, "Accueil dès 08h00 · ouverture à 09h00"],
               ["Formation (Pro & Premium)", EVENT.training.datesLabel, `${EVENT.training.hours} · ${EVENT.training.venue}`],
+              ["Levée de fonds (Premium)", EVENT.fundraising.datesLabel, `${EVENT.fundraising.hours} · séance réservée aux tickets Premium`],
             ].map(([k, v, d]) => (
               <div key={k} className="grid gap-1 py-5 sm:grid-cols-[10rem_1fr] sm:gap-6">
                 <dt className="text-sm font-medium text-muted sm:pt-1">{k}</dt>

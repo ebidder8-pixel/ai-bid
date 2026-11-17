@@ -27,6 +27,9 @@ function Stepper({ tier, value, onChange, max }: { tier: Tier; value: number; on
   );
 }
 
+// Sur grand écran, le Premium (100 000 FCFA) est mis en avant au centre.
+const DESKTOP_ORDER: Record<TierId, string> = { essentiel: "lg:order-1", premium: "lg:order-2", pro: "lg:order-3" };
+
 function TierTicket({ tier, qty, setQty, max }: { tier: Tier; qty: number; setQty: (n: number) => void; max: number }) {
   const premium = tier.id === "premium";
   const hole = "14px";
@@ -36,7 +39,7 @@ function TierTicket({ tier, qty, setQty, max }: { tier: Tier; qty: number; setQt
   return (
     <article
       aria-labelledby={`tier-${tier.id}`}
-      className={`relative flex flex-col overflow-hidden rounded-[22px] ${
+      className={`relative flex flex-col overflow-hidden rounded-[22px] ${DESKTOP_ORDER[tier.id]} ${
         premium ? "bg-[#2A1150] text-white lg:-my-6" : "bg-white text-ink"
       } shadow-[0_30px_60px_-30px_rgba(0,26,56,0.45)] ${qty > 0 ? "ring-4" : "ring-0"}`}
       style={{ WebkitMaskImage: mask, maskImage: mask, WebkitMaskComposite: "source-in", maskComposite: "intersect", ["--tw-ring-color" as string]: tier.color }}
@@ -119,7 +122,7 @@ export function Billets() {
             Choisissez vos billets
           </h2>
           <p className="max-w-[48ch] text-lg leading-relaxed text-muted lg:col-span-5">
-            Tous les billets donnent accès aux trois jours et au livre «&nbsp;Comment gagner des marchés publics&nbsp;?&nbsp;». Vous pouvez
+            Tous les billets donnent accès à la journée du samedi 27 février et au livre «&nbsp;Comment gagner des marchés publics&nbsp;?&nbsp;». Vous pouvez
             en prendre plusieurs, de formules différentes, dans la même commande.
           </p>
         </div>

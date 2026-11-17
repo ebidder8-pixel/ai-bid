@@ -171,7 +171,7 @@ function MobilePass({ tierId, holder, code, qr, index }: { tierId: TierId; holde
       <div className="relative bg-navy-800 px-6 pb-5 pt-5 text-white">
         <div className="absolute inset-x-0 top-0 h-2" style={{ background: tier.color }} />
         <div className="flex items-center justify-between">
-          <p className="font-display text-sm font-semibold text-gold-300">AI-BID 2027 · 26–28 fév.</p>
+          <p className="font-display text-sm font-semibold text-gold-300">AI-BID 2027 · 27 fév.</p>
           <p className="text-sm text-navy-200">{index}</p>
         </div>
         <p className="mt-3 truncate font-display text-2xl font-extrabold">{holder}</p>

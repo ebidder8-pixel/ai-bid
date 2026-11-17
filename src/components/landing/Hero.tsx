@@ -36,13 +36,13 @@ export function Hero() {
 
           <p className="mt-8 max-w-[34ch] font-display text-xl font-semibold leading-snug text-white sm:text-2xl">{EVENT.tagline}.</p>
           <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-navy-100 sm:text-lg">
-            Trois jours à Cotonou pour monter des offres de marchés publics plus solides, avec des outils d&apos;intelligence artificielle
-            utilisés sur de vrais dossiers.
+            Une journée de masterclass à Cotonou pour découvrir concrètement comment l&apos;IA aide à analyser les DAO, préparer ses offres
+            plus vite et réduire les erreurs.
           </p>
 
           <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
             <div>
-              <dt className="text-sm text-navy-200">Dates</dt>
+              <dt className="text-sm text-navy-200">Date</dt>
               <dd className="font-display text-xl font-bold sm:text-2xl">{EVENT.datesLabel}</dd>
             </div>
             <div>

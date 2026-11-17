@@ -7,7 +7,7 @@ const golos = Golos_Text({ variable: "--font-golos", subsets: ["latin"], weight:
 const roboto = Roboto({ variable: "--font-roboto", subsets: ["latin"], weight: ["400", "500", "700"] });
 const script = Great_Vibes({ variable: "--font-greatvibes", subsets: ["latin"], weight: "400" });
 
-const description = `${EVENT.kind} ${EVENT.name}, du 26 au 28 février 2027 à Cotonou. ${EVENT.theme}. Billetterie officielle organisée par e-BIDDER.`;
+const description = `${EVENT.kind} ${EVENT.name}, le samedi 27 février 2027 à Cotonou. ${EVENT.theme}. Billetterie officielle organisée par e-BIDDER.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

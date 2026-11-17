@@ -20,7 +20,7 @@ function OnlyBadge({ only }: { only: TierId[] }) {
 }
 
 export function Programme() {
-  const [active, setActive] = useState("j1");
+  const [active, setActive] = useState("evenement");
   const day = PROGRAMME.find((d) => d.id === active)!;
 
   return (
@@ -31,14 +31,14 @@ export function Programme() {
           <div>
             <h2 className="font-display text-[clamp(2.4rem,5vw,4.2rem)] font-black leading-none tracking-[-0.02em]">Le programme</h2>
             <p className="mt-4 max-w-[52ch] text-lg text-navy-200">
-              Une semaine de formation, puis trois jours d&apos;événement. Programme provisoire, les intervenants seront annoncés prochainement.
+              Une semaine de formation, la masterclass le samedi, puis la séance de levée de fonds le dimanche. Programme provisoire, les intervenants seront annoncés prochainement.
             </p>
           </div>
         </div>
 
         {/* Frise : la formation précède l'événement */}
-        <div role="tablist" aria-label="Jours du programme" className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {PROGRAMME.map((d, i) => {
+        <div role="tablist" aria-label="Jours du programme" className="mt-14 grid gap-3 sm:grid-cols-3">
+          {PROGRAMME.map((d) => {
             const on = d.id === active;
             return (
               <button
@@ -52,7 +52,7 @@ export function Programme() {
                   on ? "bg-white text-ink" : "bg-white/[0.06] text-white ring-1 ring-inset ring-white/10 hover:bg-white/10"
                 }`}
               >
-                <span className={`text-sm ${on ? "text-muted" : "text-navy-300"}`}>{i === 0 ? "Avant l'événement" : `Jour ${i}`}</span>
+                <span className={`text-sm ${on ? "text-muted" : "text-navy-300"}`}>{d.tag}</span>
                 <span className="mt-1 block font-display text-2xl font-black tracking-tight sm:text-3xl">{d.date}</span>
                 <span className={`mt-1 block text-sm font-medium ${on ? "text-orange-600" : "text-gold-300"}`}>{d.weekday}</span>
               </button>
@@ -75,12 +75,7 @@ export function Programme() {
             >
               <div className="lg:col-span-4">
                 <h3 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">{day.title}</h3>
-                {day.id === "formation" && (
-                  <p className="mt-4 max-w-[38ch] leading-relaxed text-navy-200">
-                    Réservée aux tickets Pro et Premium. Cinq matinées en petit groupe au siège d&apos;e-BIDDER. Les attestations sont remises le
-                    dimanche 28 février, pendant l&apos;événement.
-                  </p>
-                )}
+                {day.intro && <p className="mt-4 max-w-[38ch] leading-relaxed text-navy-200">{day.intro}</p>}
                 {day.only && (
                   <div className="mt-5">
                     <OnlyBadge only={day.only} />

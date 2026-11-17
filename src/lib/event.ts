@@ -10,15 +10,22 @@ export const EVENT = {
   kind: "Masterclass",
   theme: "L'intelligence artificielle au service du montage des offres de marchés publics",
   tagline: "Analysez, préparez et vérifiez plus rapidement avec l'IA",
-  /** Jours de l'événement (heure de Cotonou, UTC+1). */
-  startsAt: "2027-02-26T08:30:00+01:00",
-  endsAt: "2027-02-28T13:00:00+01:00",
-  datesLabel: "26 – 28 février 2027",
-  datesShort: "26-28 FÉV. 2027",
+  /** Jour de l'événement (heure de Cotonou, UTC+1). */
+  startsAt: "2027-02-27T08:00:00+01:00",
+  endsAt: "2027-02-27T17:30:00+01:00",
+  datesLabel: "Samedi 27 février 2027",
+  dateShort: "27 février 2027",
+  datesShort: "27 FÉV. 2027",
   venue: "Palais des Congrès de Cotonou",
   venueShort: "Palais des Congrès",
   city: "Cotonou, Bénin",
-  hours: "Accueil dès 08h00 · Sessions de 08h30 à 17h30",
+  hours: "Accueil dès 08h00 · Sessions de 09h00 à 17h30",
+  hoursShort: "08h00 – 17h30",
+  fundraising: {
+    label: "Séance de levée de fonds e-BIDDER",
+    datesLabel: "Dimanche 28 février 2027",
+    hours: "09h00 – 13h00",
+  },
   training: {
     label: "Formation pratique sur le montage des offres",
     datesLabel: "15 – 19 février 2027",
@@ -67,7 +74,7 @@ export const TIERS: Tier[] = [
     ink: "#FFFFFF",
     included: [
       "Livre « Comment gagner des marchés publics ? »",
-      "Accès aux 3 jours d'AI-BID 2027",
+      "Accès à AI-BID 2027 (samedi 27 février)",
       "Networking & réseautage professionnel",
     ],
     bonus: ["Échanges et rencontres avec les participants"],
@@ -82,7 +89,7 @@ export const TIERS: Tier[] = [
     ink: "#FFFFFF",
     included: [
       "Livre « Comment gagner des marchés publics ? »",
-      "Accès aux 3 jours d'AI-BID 2027",
+      "Accès à AI-BID 2027 (samedi 27 février)",
       "Formation pratique d'une semaine sur le montage des offres",
       "Attestation de formation",
       "Networking & réseautage professionnel",
@@ -99,12 +106,12 @@ export const TIERS: Tier[] = [
     ink: "#EFBB59",
     included: [
       "Livre « Comment gagner des marchés publics ? »",
-      "Accès aux 3 jours d'AI-BID 2027",
+      "Accès à AI-BID 2027 (samedi 27 février)",
       "Formation pratique d'une semaine sur le montage des offres",
       "Attestation de formation",
       "Networking & réseautage professionnel",
       "Soirée privée des entrepreneurs des marchés publics",
-      "Accès privilégié aux rencontres liées à la levée de fonds d'e-BIDDER",
+      "Séance de levée de fonds d'e-BIDDER (dimanche 28 février)",
     ],
     bonus: ["Cercle privé d'entrepreneurs", "Rencontres avec partenaires et acteurs de l'écosystème"],
   },
@@ -128,9 +135,12 @@ export interface ProgrammeSlot {
 
 export interface ProgrammeDay {
   id: string;
+  /** Étiquette de l'onglet (ex. « L'événement »). */
+  tag: string;
   date: string;
   weekday: string;
   title: string;
+  intro?: string;
   slots: ProgrammeSlot[];
   only?: TierId[];
 }
@@ -139,9 +149,11 @@ export interface ProgrammeDay {
 export const PROGRAMME: ProgrammeDay[] = [
   {
     id: "formation",
+    tag: "Avant l'événement",
     date: "15 – 19 fév.",
     weekday: "Lun. → Ven.",
     title: "La semaine de formation",
+    intro: "Réservée aux tickets Pro et Premium. Cinq matinées en petit groupe au siège d'e-BIDDER. Les attestations sont remises le samedi 27 février, pendant l'événement.",
     only: ["pro", "premium"],
     slots: [
       { time: "Lundi", title: "Lire un DAO sans rien rater", detail: "Critères de qualification, pièces exigées, pièges récurrents." },
@@ -152,53 +164,74 @@ export const PROGRAMME: ProgrammeDay[] = [
     ],
   },
   {
-    id: "j1",
-    date: "26 fév.",
-    weekday: "Vendredi",
-    title: "Comprendre et analyser",
-    slots: [
-      { time: "08h30", title: "Accueil, remise des badges et du livre" },
-      { time: "09h30", title: "Cérémonie d'ouverture" },
-      { time: "10h15", title: "Conférence : pourquoi tant d'offres sont rejetées", detail: "Les motifs d'élimination les plus fréquents dans la commande publique." },
-      { time: "11h30", title: "Démonstration : analyser un dossier d'appel d'offres avec l'IA" },
-      { time: "14h00", title: "Panel : l'IA et la commande publique en Afrique de l'Ouest" },
-      { time: "16h00", title: "Networking" },
-    ],
-  },
-  {
-    id: "j2",
+    id: "evenement",
+    tag: "L'événement",
     date: "27 fév.",
     weekday: "Samedi",
-    title: "Préparer son offre",
+    title: "La masterclass AI-BID 2027",
+    intro: "Ouverte à tous les billets. Une journée pour voir l'IA à l'œuvre sur de vrais dossiers, de l'analyse du DAO au contrôle avant dépôt.",
     slots: [
-      { time: "08h30", title: "Atelier : le dossier administratif sans erreur" },
-      { time: "10h30", title: "Atelier : rédiger l'offre technique avec l'IA" },
-      { time: "14h00", title: "Cas pratique en équipe", detail: "Un appel d'offres réel, monté en direct." },
-      { time: "16h30", title: "Rencontres entre participants" },
+      { time: "08h00", title: "Accueil, remise des badges et du livre" },
+      { time: "09h00", title: "Cérémonie d'ouverture" },
+      { time: "09h30", title: "Conférence : pourquoi tant d'offres sont rejetées", detail: "Les motifs d'élimination les plus fréquents dans la commande publique." },
+      { time: "10h30", title: "Démonstration : analyser un DAO avec l'IA" },
+      { time: "11h30", title: "Atelier : identifier les exigences et les pièces obligatoires" },
+      { time: "13h00", title: "Pause déjeuner et networking" },
+      { time: "14h00", title: "Atelier : préparer l'offre technique avec l'IA" },
+      { time: "15h15", title: "Cas pratique : vérifier et contrôler un dossier", detail: "Un appel d'offres réel, passé au crible en direct." },
+      { time: "16h30", title: "Remise des attestations de formation", only: ["pro", "premium"] },
+      { time: "17h00", title: "Échanges, networking et clôture" },
       { time: "19h30", title: "Soirée privée des entrepreneurs des marchés publics", only: ["premium"] },
     ],
   },
   {
-    id: "j3",
+    id: "levee",
+    tag: "Levée de fonds",
     date: "28 fév.",
     weekday: "Dimanche",
-    title: "Vérifier et conclure",
+    title: "La séance de levée de fonds e-BIDDER",
+    intro: "Réservée aux tickets Premium. Une matinée de rencontres autour du projet e-BIDDER et de sa levée de fonds, avec les partenaires et acteurs de l'écosystème.",
+    only: ["premium"],
     slots: [
-      { time: "09h00", title: "Atelier : vérifier la conformité avant dépôt" },
-      { time: "10h30", title: "Session levée de fonds e-BIDDER", detail: "Rencontre avec les partenaires et acteurs de l'écosystème.", only: ["premium"] },
-      { time: "11h30", title: "Remise des attestations de formation", only: ["pro", "premium"] },
-      { time: "12h30", title: "Clôture" },
+      { time: "09h00", title: "Accueil des participants" },
+      { time: "09h30", title: "e-BIDDER : vision, marché et résultats" },
+      { time: "10h30", title: "Le projet de levée de fonds : besoins et feuille de route" },
+      { time: "11h30", title: "Échanges avec les partenaires et acteurs de l'écosystème" },
+      { time: "12h30", title: "Cocktail de networking et clôture" },
     ],
   },
 ];
 
 export const AUDIENCE = [
+  "PME et grandes entreprises",
   "Entrepreneurs",
-  "PME",
   "Professionnels des marchés publics",
   "Consultants",
-  "Jeunes professionnels",
+  "Responsables administratifs et commerciaux",
+  "Jeunes professionnels et étudiants",
 ];
+
+/** Ce que les participants vont découvrir (fiche de présentation). */
+export const DISCOVER = [
+  "Analyser rapidement un DAO avec l'IA",
+  "Identifier les exigences et les pièces obligatoires",
+  "Se faire assister dans la préparation de l'offre technique",
+  "Vérifier et contrôler son dossier avant le dépôt",
+  "Utiliser concrètement différents outils d'IA",
+  "Démonstrations et cas concrets",
+  "Des solutions numériques dédiées aux marchés publics",
+];
+
+export const FORMAT = ["Présentations", "Démonstrations", "Cas pratiques", "Échanges", "Networking"];
+
+export const SIGNATURE = "Mettre l'intelligence artificielle au service d'offres de marchés publics plus rapides, plus efficaces et plus compétitives.";
+
+export const BOOK = {
+  title: "Comment gagner des marchés publics ?",
+  subtitle: "Le guide pratique du stratège (GPS)",
+  author: "Aimé Jacquet SETO",
+  url: "https://aimeseto.systeme.io/712f0289-639b361c",
+};
 
 export const FAQ: { q: string; a: string }[] = [
   {
@@ -215,7 +248,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Quand a lieu la formation des tickets Pro et Premium ?",
-    a: "La semaine précédant l'événement, du 15 au 19 février 2027. Les attestations sont remises pendant AI-BID 2027.",
+    a: "La semaine précédant l'événement, du 15 au 19 février 2027. Les attestations sont remises le samedi 27 février, pendant AI-BID 2027.",
   },
   {
     q: "Je n'ai pas reçu l'email, que faire ?",
